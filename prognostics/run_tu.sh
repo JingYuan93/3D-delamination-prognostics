@@ -23,7 +23,6 @@ for DATA_DIR in "${DATA_DIRS[@]}"; do
   
   OUTPUT_ROOT="./${DATA_DIR}_hyperparam_search_results"
   mkdir -p "${OUTPUT_ROOT}"
-
  
   for LR in "${LRS[@]}"; do
     for BS in "${BATCH_SIZES[@]}"; do
