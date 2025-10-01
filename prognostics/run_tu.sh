@@ -2,7 +2,7 @@
 # grid_search.sh
 PYTHON_EXEC=python
 
-TRAIN_SCRIPT=transformer_unet_clean.py
+TRAIN_SCRIPT=U-Tprognostic.py
 
 declare -a DATA_DIRS=("data")
 
