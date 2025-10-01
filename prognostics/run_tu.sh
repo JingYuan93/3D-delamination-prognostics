@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+# grid_search.sh
 PYTHON_EXEC=python
 
-TRAIN_SCRIPT=U-T.py
+TRAIN_SCRIPT=transformer_unet_clean.py
 
 declare -a DATA_DIRS=("data")
 
@@ -9,7 +10,7 @@ EPOCHS=50
 
 declare -a LRS=(1e-4)
 declare -a BATCH_SIZES=(4)
-declare -a MAX_SEQS=(9)
+declare -a MAX_SEQS=(10)
 declare -a HIDDENS=(1024)
 declare -a W_CES=(1.0)            
 declare -a W_DICES=(1)
@@ -18,11 +19,13 @@ declare -a W_SHAPE_MONOS=(0)
 declare -a W_DEPTH_MONOS=(1)
 declare -a W_EXPANDS=(1)
 
+
 for DATA_DIR in "${DATA_DIRS[@]}"; do
 
   
   OUTPUT_ROOT="./${DATA_DIR}_hyperparam_search_results"
   mkdir -p "${OUTPUT_ROOT}"
+
  
   for LR in "${LRS[@]}"; do
     for BS in "${BATCH_SIZES[@]}"; do
@@ -35,7 +38,7 @@ for DATA_DIR in "${DATA_DIRS[@]}"; do
                   for WDM in "${W_DEPTH_MONOS[@]}"; do
                     for WE in "${W_EXPANDS[@]}"; do
 
-                     
+                      
                       SUBDIR="lr_${LR}_bs_${BS}_seq_${MS}_hd_${HD}_wCE_${WCE}_wD_${WD}_wJ_${WJ}_wSM_${WSM}_wDM_${WDM}_wE_${WE}"
                       EXP_DIR="${OUTPUT_ROOT}/${SUBDIR}"
                       mkdir -p "${EXP_DIR}"
@@ -63,7 +66,7 @@ for DATA_DIR in "${DATA_DIRS[@]}"; do
                       echo "=============================================="
                       echo ""
 
-                      
+                     
                       ${PYTHON_EXEC} "${TRAIN_SCRIPT}" train \
                         --data_dir        "${DATA_DIR}" \
                         --epochs          "${EPOCHS}" \
