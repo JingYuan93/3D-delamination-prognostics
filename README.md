@@ -10,7 +10,7 @@ Data and code for the paper **“Prior information-aided three-dimensional fatig
 - NumPy, OpenCV, Matplotlib
 
 ## Notices
-- **Raw data.** `APPENDIXB1`, `APPENDIXB2`, `APPENDIXB3`, `APPENDIXB3`, `APPENDIXB5` are the **original ultrasonic C-scan images** for each specimen.
+- **Raw data.** `APPENDIXB1`, `APPENDIXB2`, `APPENDIXB3`, `APPENDIXB4`, `APPENDIXB5` in the folder APPENDIXB are the **original ultrasonic C-scan images** for each specimen.
 - **Preprocess.** `feature_map+reconstruction/` converts C-scans to 5-channel feature maps and provides simple visualization.
 - **Prognostics code.** `prognostics/` contains:
   - `U-Tprognostic.py`: main training/evaluation script (U-Net + temporal module with prior-informed losses).
